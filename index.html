@@ -12,6 +12,23 @@
     <svg id="myviz" width="500" height="500"></svg>
   </body>
   <script type="text/javascript">
-    vegaEmbed("#myviz", "example.vl.json");
+    var vlSpec = {
+      $schema: "https://vega.github.io/schema/vega-lite/v6.json",
+      data: {
+        values: [
+          { A: 10, B: 21, C: 2 },
+          { A: 30, B: 20, C: 4 },
+          { A: 25, B: 15, C: 6 },
+          { A: 5, B: 30, C: 9 },
+        ],
+      },
+      mark: "circle",
+      encoding: {
+        x: { field: "A", type: "quantitative" },
+        y: { field: "B", type: "quantitative" },
+        size: { field: "C", type: "quantitative" },
+      },
+    };
+    vegaEmbed("#myviz", vlSpec);
   </script>
 </html>
